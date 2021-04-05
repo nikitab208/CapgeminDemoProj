@@ -1,0 +1,48 @@
+
+    <div class="container">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="row">
+          <div class="col-md-12">
+          <div [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }">
+            <label for="uname"><b>Employee Name</b></label>
+            <input type="text" placeholder="Enter Name" formControlName="eName"  required>
+        </div>
+          <div *ngIf="isSubmitted && formControls.name.errors" class="help-block">
+            <div *ngIf="formControls.name.errors.required">Name is required</div>
+          </div>
+            
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+            <label for="email"><b>Employee Age</b></label>
+            <input type="text" placeholder="Enter Email"  formControlName="eAge"  required>
+            </div>
+            <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+              <div *ngIf="formControls.email.errors.required">Username is required</div>
+            </div>
+
+          </div>
+          <div class="col-md-12" *ngIf="departmentExtra">
+            <div [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+            <label for="email"><b>Employee Department</b></label>
+            <input type="text" placeholder="Enter Email"  formControlName="eDepartment"  required>
+            </div>
+            <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+              <div *ngIf="formControls.email.errors.required">Username is required</div>
+            </div>
+
+          </div>
+          
+      </div>
+            <label>
+              <input type="checkbox" formControlName="department" name="remember" (change)="department(this.registerForm.value.department)"> Department
+            </label>
+            <button type="submit">Add New Employee</button>
+            </form>
+     
+    </div>
+  
+   
+  

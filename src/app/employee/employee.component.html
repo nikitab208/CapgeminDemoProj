@@ -1,0 +1,36 @@
+<button class="btn btn-primary" routerLink="/add-employee">Add New Employee</button><br>
+<div class="row grow w-100">
+    <div class="col-9 py-9 side">
+        <form [formGroup]="serachForm" >  
+        <div class="form-group"><br>
+            <input type="text" class="form-control" placeholder="Search Here" formControlName="term">
+        </div>
+        <table class="table table-striped border mt-1">
+            <thead>
+                <tr>
+                <th scope="col" [appSort] = "dataList.data" data-order ="desc" data-name="id">Employee Id</th>
+                <th scope="col" [appSort] = "dataList.data" data-order ="desc" data-name="employee_name"> Employee Name</th>
+                <th scope="col" [appSort] = "dataList.data" data-order ="desc" data-name="employee_age">Employee Age</th>
+                <th scope="col" [appSort] = "dataList.data" data-order ="desc" data-name="employee_salary">Employee Date Of Birth</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of dataList.data | filter :'employee_name':searchTerm;let i=index" (click)="editEmployee(data.id)">
+                   <td>{{data.id}}</td> 
+                   <td>{{data.employee_name}}</td>
+                   <td>{{data.employee_age}}</td>
+                   <td>{{data.employee_salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+      
+          </form>
+      
+    </div>
+    </div>
+
+
+
+
+
+
